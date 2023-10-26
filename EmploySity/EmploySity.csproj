@@ -6,6 +6,7 @@
         <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
         <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
         <IsPackable>false</IsPackable>
+        <SpaRoot>ClientApp\</SpaRoot>
         <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
         <SpaProxyServerUrl>https://localhost:44442</SpaProxyServerUrl>
         <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
@@ -14,29 +15,38 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="7.0.9"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.13">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
     </ItemGroup>
 
     <ItemGroup>
         <!-- Don't publish the SPA source files, but do show them in the project files list -->
         <Content Remove="$(SpaRoot)**"/>
+        <Content Include="bin\Debug\net7.0\appsettings.Development.json" />
+        <Content Include="bin\Debug\net7.0\appsettings.json" />
+        <Content Include="bin\Debug\net7.0\EmploySity.deps.json" />
+        <Content Include="bin\Debug\net7.0\EmploySity.dll" />
+        <Content Include="bin\Debug\net7.0\EmploySity.exe" />
+        <Content Include="bin\Debug\net7.0\EmploySity.pdb" />
+        <Content Include="bin\Debug\net7.0\EmploySity.runtimeconfig.json" />
+        <Content Include="bin\Debug\net7.0\Microsoft.AspNetCore.SpaProxy.dll" />
+        <Content Include="bin\Debug\net7.0\Microsoft.OpenApi.dll" />
+        <Content Include="bin\Debug\net7.0\spa.proxy.json" />
+        <Content Include="bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll" />
+        <Content Include="bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll" />
+        <Content Include="bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll" />
         <None Remove="$(SpaRoot)**"/>
         <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**"/>
-        <None Include="package-lock.json" />
-        <None Include="package.json" />
-        <None Include="public\manifest.json" />
-
-
 
 
     </ItemGroup>
-
 
 
 
