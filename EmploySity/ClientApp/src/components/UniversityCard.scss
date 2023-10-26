@@ -1,0 +1,34 @@
+﻿.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  
+  .card-header {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    
+    .university-title {
+      flex: 1;
+    }
+    
+    .country-pic {
+      max-height: 20px;
+    }
+  }
+  
+  .card-body {    
+    .university-pic {
+      display: block;
+      max-height: 200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.card:hover {
+  box-shadow: 0 5px 15px rgba(129, 119, 215, 0.4);
+}
