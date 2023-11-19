@@ -29,4 +29,8 @@ public class University
     /// Путь к изображению страны университета
     /// </summary>
     public string CountryPicUrl { get; set; }
+    
+    public double CoordinateX { get; set; }
+    
+    public double CoordinateY { get; set; }
 }

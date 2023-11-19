@@ -1,6 +1,7 @@
-﻿.main {
-  .university-cards-section {
-    display: flex;
+﻿#main {
+  #university-cards-section {
+    display: grid;
     justify-content: space-around;
+    grid-template-columns: repeat(auto-fit, 300px);
   }
 }

@@ -1,0 +1,32 @@
+﻿#mapElements {
+  display: grid;
+  height: 500px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 25px;
+  grid-template-rows: 30px auto;
+}
+
+[class*="copyrights-pane"] {
+  display: none !important
+}
+
+#mapSelectBox {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#selectBox {
+  height: 35px;
+  width: 300px;
+}
+
+#map {
+  width: 300px;
+  margin-top: 10px;
+}
+
+.ymaps-2-1-79-map {
+  
+}
