@@ -14,10 +14,10 @@ public class WorkPlaceController : ControllerBase
         _workPlaceService = workPlaceService;
     }
 
-    [HttpGet("GetWorkPlaces")]
-    public IActionResult GetWorkPlaces()
+    [HttpGet("GetWorkPlacesByUniversityId/{universityId}")]
+    public IActionResult GetWorkPlaces(int universityId)
     {
-        var result = _workPlaceService.GetWorkPlaces();
+        var result = _workPlaceService.GetWorkPlacesByUniversityId(universityId);
         return Ok(result);
     }
 }

@@ -6,6 +6,6 @@ export const urls = {
         GET_UNIVERSITIES: `api/${UniversityAlias}/getUniversities`
     },
     workPlace:  {
-        GET_WORK_PLACES: `api/${WorkPlaceAlias}/getWorkPlaces`
+        GET_WORK_PLACES_BY_UNIVERSITY: `api/${WorkPlaceAlias}/getWorkPlacesByUniversityId`
     }
 }

@@ -13,9 +13,8 @@ public class WorkPlaceService : IWorkPlaceService
         _workPlaceRepository = workPlaceRepository;
     }
 
-    public List<WorkPlace> GetWorkPlaces()
+    public List<WorkPlace> GetWorkPlacesByUniversityId(int universityId)
     {
-        var result = _workPlaceRepository.GetAllAsync();
-        return result.Result;
+        return _workPlaceRepository.GetWorkPlacesByUniversity(universityId);
     }
 }
