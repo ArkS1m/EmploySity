@@ -2,11 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {getUniversities} from "../../services/universityService";
 import {getWorkPlaces} from "../../services/workPlaceService";
 import {UniversityCard} from "../UniversityCard";
-import {YandexPlaceMark} from "../YandexPlaceMark";
-import {FullscreenControl, Map, YMaps} from "@pbe/react-yandex-maps";
-
 import "../../styles/Layout/Home.scss";
 import Popup from "reactjs-popup";
+import {YandexMap} from "../YandexMap";
 
 export default function Home () {
     const [universityListState, setUniversityListState] = useState([]);
@@ -86,24 +84,18 @@ export default function Home () {
                     </div>
                 )}
             </div>
-            <Popup 
-                open={!!selectedUniversity}
-                onClose={closeModal}
-            >
+            <Popup open={!!selectedUniversity} onClose={closeModal}>
                 <div className={"mapPopupTitle"}>
                     {selectedUniversity?.name}
+                    <button id={"closeModalButton"} onClick={closeModal}>
+                        <img id={"closeButtonImage"} src={process.env.PUBLIC_URL + '/media/close-button.png'} alt={'X'}/>
+                    </button>
                 </div>
-                <div 
-                    id={"mapElements"}
-                >
-                    <div
-                        id={"mapSelectBox"}
-                    >
-                        <select
-                            id={"workPlaceSelectBox"}
-                            className={"selectBox"}
-                            disabled={workPlaceListState.length === 0}
-                            onChange={(e) => changeSelectedWorkPlace(e)}
+                <div id={"mapElements"}>
+                    <div id={"mapSelectBox"}>
+                        <select id={"workPlaceSelectBox"} className={"selectBox"}
+                                disabled={workPlaceListState.length === 0}
+                                onChange={(e) => changeSelectedWorkPlace(e)}
                         >
                             <option value="" selected disabled hidden>Места работы</option>
                             {workPlaceListState.map((workPlace) => (
@@ -114,26 +106,7 @@ export default function Home () {
                             ))}
                         </select>
                     </div>
-                    <div id={"map"}>
-                        <YMaps
-                            query={{ apikey: '2f1f0fe2-a1ed-4eef-a7fb-dd54c3dacb42' }}>
-                            <Map
-                                width={"100%"}
-                                state={mapState}
-                                defaultState={{ center: [55.995387, 92.793795], zoom: 15, controls: [] }}
-                            >
-                                {workPlaceListState.map(x =>
-                                    <YandexPlaceMark
-                                        workPlaceName={x.name}
-                                        workPlaceCoordinateX={x.coordinateX}
-                                        workPlaceCoordinateY={x.coordinateY}
-                                        workPlaceConditions={x.conditions}
-                                        workPlaceDescription={x.description}
-                                    />
-                                )}
-                            </Map>
-                        </YMaps>
-                    </div>
+                    <YandexMap mapState={mapState} workPlaceListState={workPlaceListState}/>
                 </div>
             </Popup>
         </div>

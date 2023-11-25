@@ -24,6 +24,23 @@
   margin-right: auto;
 }
 
+#closeModalButton {
+  width: 25px;
+  height: 25px;
+  right: 5px;
+  border: none;
+  background: none;
+  padding: 0;
+  position: absolute;
+}
+
+#closeButtonImage {
+  display: block;
+  border: none;
+  width: 25px;
+  height: 25px;
+}
+
 #map {
   flex-grow: 1;
   width: 100%;
@@ -40,3 +57,9 @@
     width: 100% !important;
   }
 }
+
+#closeButtonImage:hover{
+  -webkit-filter: grayscale(15%);
+}
+
+button:focus { outline: none; }
