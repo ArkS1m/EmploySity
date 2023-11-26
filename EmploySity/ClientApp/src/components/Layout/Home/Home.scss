@@ -1,24 +1,12 @@
 ﻿#main {
-  #university-cards-section {
+  .university-cards-section {
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(auto-fit, 300px);
-    gap: 10px;
+    gap: 16px;
   }
 }
 
-.popup-content {
-  margin: auto;
-  background: rgb(255, 255, 255);
-  min-width: 300px;
-  width: 60%;
-  padding: 5px;
-  border-radius: 8px;
-  
-  .mapPopupTitle {
-    font-size: 24px;
-    text-align: center;
-  }
-}
 .popup-arrow {
   color: rgb(255, 255, 255);
 }
@@ -32,4 +20,13 @@
 }
 [data-popup='tooltip'].popup-overlay {
   background: transparent;
+}
+
+.mapElements {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 100%;
+  padding: 5px;
+  justify-content: center;
 }

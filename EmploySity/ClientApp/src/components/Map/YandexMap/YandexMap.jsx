@@ -1,6 +1,7 @@
 ﻿import {Map, YMaps} from "@pbe/react-yandex-maps";
 import {YandexPlaceMark} from "./YandexPlaceMark";
 import {Component} from "react";
+import "./YandexMap.scss"
 
 export class YandexMap extends Component {
     constructor(props) {
@@ -14,7 +15,9 @@ export class YandexMap extends Component {
         } = this.props;
 
         return (
-            <div id={"map"}>
+            <div 
+                className={"yandexMap"}
+            >
                 <YMaps
                     query={{ apikey: '2f1f0fe2-a1ed-4eef-a7fb-dd54c3dacb42' }}>
                     <Map

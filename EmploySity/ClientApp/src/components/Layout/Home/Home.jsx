@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {getUniversities} from "../../services/universityService";
-import {getWorkPlaces} from "../../services/workPlaceService";
-import {UniversityCard} from "../UniversityCard";
-import "../../styles/Layout/Home.scss";
-import Popup from "reactjs-popup";
-import {YandexMap} from "../YandexMap";
+import React, { useEffect, useState } from 'react';
+import { getUniversities } from "../../../services/universityService";
+import { getWorkPlaces } from "../../../services/workPlaceService";
+import { UniversityCard } from "../../UniversityCard/UniversityCard";
+import { YandexMap } from "../../Map/YandexMap/YandexMap";
+import SelectBox from "../../Basic/SelectBox/SelectBox";
+import DefaultPopup from "../../Basic/DefaultPopup/DeafultPopup";
+import "./Home.scss";
 
 export default function Home () {
     const [universityListState, setUniversityListState] = useState([]);
@@ -16,8 +17,9 @@ export default function Home () {
     
     const removeBalloon = () => {
         const removeBalloonButton = document.getElementsByClassName("ymaps-2-1-79-balloon__close-button")[0];
-        if (removeBalloonButton !== undefined)
+        if (removeBalloonButton !== undefined) {
             removeBalloonButton.click();
+        }
     }
 
     const changeSelectedUniversity = (university) => {
@@ -56,8 +58,7 @@ export default function Home () {
             .then((result) => {
                 setUniversityListState(result);
             });
-        }, []
-    );
+    }, []);
     
     useEffect(() => {
         if (!selectedUniversity) {
@@ -71,44 +72,54 @@ export default function Home () {
     }, [selectedUniversity])
         
     return (
-        <div id={"main"}>
-            <div id={"university-cards-section"}>
+        <div
+            id={"main"}
+        >
+            <div
+                className={"university-cards-section"}
+            >
                 {universityListState.map((university) =>
-                    <div onClick={() => changeSelectedUniversity(university)}>
+                    <div
+                        onClick={() => changeSelectedUniversity(university)}
+                    >
                         <UniversityCard
                             universityName={university.name}
                             universityCountry={university.country}
                             universityLogoPicUrl={university.unversityLogoPicUrl}
                             universityCountryPicUrl={university.countryPicUrl}
-                        ></UniversityCard>
+                        />
                     </div>
                 )}
             </div>
-            <Popup open={!!selectedUniversity} onClose={closeModal}>
-                <div className={"mapPopupTitle"}>
-                    {selectedUniversity?.name}
-                    <button id={"closeModalButton"} onClick={closeModal}>
-                        <img id={"closeButtonImage"} src={process.env.PUBLIC_URL + '/media/close-button.png'} alt={'X'}/>
-                    </button>
+            <DefaultPopup
+                isOpened={!!selectedUniversity}
+                onCloseHandler={closeModal}
+                popupTitle={selectedUniversity?.name}
+            >
+                <div
+                    className={"mapElements"}
+                >
+                    <SelectBox
+                        selectBoxId={"workPlaceSelectBox"}
+                        selectBoxClassName={"selectBox"}
+                        isDisabled={workPlaceListState.length === 0}
+                        changeHandler={changeSelectedWorkPlace}
+                        isDefaultOptionNeeded={true}
+                        defaultOptionValue={""}
+                        isDefaultOptionSelected={true}
+                        isDefaultOptionDisabled={true}
+                        isDefaultOptionHidden={true}
+                        defaultOptionLabel={"Места работы"}
+                        options={workPlaceListState}
+                        optionValueKey={"id"}
+                        optionLabelKey={"name"}
+                    />
+                    <YandexMap
+                        mapState={mapState}
+                        workPlaceListState={workPlaceListState}
+                    />
                 </div>
-                <div id={"mapElements"}>
-                    <div id={"mapSelectBox"}>
-                        <select id={"workPlaceSelectBox"} className={"selectBox"}
-                                disabled={workPlaceListState.length === 0}
-                                onChange={(e) => changeSelectedWorkPlace(e)}
-                        >
-                            <option value="" selected disabled hidden>Места работы</option>
-                            {workPlaceListState.map((workPlace) => (
-                                <option
-                                    value={workPlace.id}
-                                    label={workPlace.name}
-                                />
-                            ))}
-                        </select>
-                    </div>
-                    <YandexMap mapState={mapState} workPlaceListState={workPlaceListState}/>
-                </div>
-            </Popup>
+            </DefaultPopup>
         </div>
     );
 }
