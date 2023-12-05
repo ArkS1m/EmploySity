@@ -1,4 +1,5 @@
-﻿using EmploySity.Models.Filters;
+﻿using EmploySity.Models;
+using EmploySity.Models.Filters;
 using EmploySity.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,14 +19,14 @@ public class UniversityController : ControllerBase
     [HttpGet("GetUniversities")]
     public IActionResult GetUniversities()
     {
-        var result = _universityService.GetUniversities();
+        List<University> result = _universityService.GetUniversities();
         return Ok(result);
     }
 
     [HttpGet("GetUniversitiesByFilter")]
     public IActionResult GetUniversities(UniversityFilter filter)
     {
-        var result = _universityService.GetUniversities(filter);
+        List<University> result = _universityService.GetUniversities(filter);
         return Ok(result);
     }
 }

@@ -56,6 +56,10 @@ export default function Home () {
     useEffect(() => {
         getUniversities()
             .then((result) => {
+                if (!result) {
+                    result = [];
+                }
+                
                 setUniversityListState(result);
             });
     }, []);
@@ -67,6 +71,10 @@ export default function Home () {
         
         getWorkPlaces(selectedUniversity.id)
             .then((result) => {
+                if (!result) {
+                    result = [];
+                }
+                
                 setWorkPlaceListState(result)
             });
     }, [selectedUniversity])
@@ -85,7 +93,7 @@ export default function Home () {
                         <UniversityCard
                             universityName={university.name}
                             universityCountry={university.country}
-                            universityLogoPicUrl={university.unversityLogoPicUrl}
+                            universityLogoPicUrl={university.universityLogoPicUrl}
                             universityCountryPicUrl={university.countryPicUrl}
                         />
                     </div>
