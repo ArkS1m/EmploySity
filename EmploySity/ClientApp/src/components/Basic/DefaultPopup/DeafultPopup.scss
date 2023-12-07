@@ -1,0 +1,36 @@
+﻿.popup-content {
+    margin: auto;
+    background: rgb(255, 255, 255);
+    min-width: 320px;
+    width: 60%;
+    padding: 5px;
+    border-radius: 8px;
+
+    .defaultPopupTitle {
+        font-size: 24px;
+        text-align: center;
+    }
+}
+
+.defaultPopupCloseButton {
+    width: 25px;
+    height: 25px;
+    right: 5px;
+    border: none;
+    background: none;
+    padding: 0;
+    position: absolute;
+}
+
+.defaultPopupCloseButton:hover{
+    -webkit-filter: grayscale(15%);
+}
+
+.defaultPopupCloseButtonImage {
+    display: block;
+    border: none;
+    width: 25px;
+    height: 25px;
+}
+
+button:focus { outline: none; }

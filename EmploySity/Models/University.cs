@@ -23,10 +23,20 @@ public class University
     /// <summary>
     /// Путь к изображению лого университета
     /// </summary>
-    public string UnversityLogoPicUrl { get; set; }
+    public string universityLogoPicUrl { get; set; }
     
     /// <summary>
     /// Путь к изображению страны университета
     /// </summary>
     public string CountryPicUrl { get; set; }
+    
+    /// <summary>
+    /// Координата университета по оси X
+    /// </summary>
+    public double CoordinateX { get; set; }
+    
+    /// <summary>
+    /// Координата университета по оси Y
+    /// </summary>
+    public double CoordinateY { get; set; }
 }

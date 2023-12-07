@@ -1,9 +1,8 @@
 ﻿.card {
-  display: flex;
-  flex-direction: column;
   min-width: 300px;
+  max-width: 300px;
+  height: 273px;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
   
   .card-header {
     display: flex;
@@ -23,6 +22,7 @@
     .university-pic {
       display: block;
       max-height: 200px;
+      max-width: 270px;
       margin-left: auto;
       margin-right: auto;
     }
